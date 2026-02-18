@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaswanth Kumar Gamidi | Cybersecurity & Entrepreneurship</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Archivo+Black&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --terminal-green: #00ff41;
+            --matrix-green: #0dff00;
+            --dark-bg: #0a0e17;
+            --darker-bg: #050810;
+            --accent-cyan: #00d9ff;
+            --warning-red: #ff0051;
+            --grid-color: rgba(0, 255, 65, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--dark-bg);
+            color: var(--terminal-green);
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        /* Animated grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridScroll 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes gridScroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        /* Glitch effect */
+        .glitch {
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 2px); }
+            94% { transform: translate(2px, -2px); }
+            96% { transform: translate(-2px, -2px); }
+        }
+
+        /* Header/Nav */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--terminal-green);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            color: var(--terminal-green);
+            text-shadow: 0 0 10px var(--terminal-green);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--terminal-green);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '>';
+            position: absolute;
+            left: -15px;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+            left: -20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .terminal-prefix {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        h1 {
+            font-family: 'Archivo Black', sans-serif;
+            /* fluid size using clamp */
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--terminal-green), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tagline {
+            /* responsive tagline */
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--terminal-green);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            animation: slideUp 1s ease-out 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+            animation: slideUp 1s ease-out 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--terminal-green);
+            background: transparent;
+            color: var(--terminal-green);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--terminal-green);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px var(--terminal-green);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .btn-secondary::before {
+            background: var(--accent-cyan);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 0 20px var(--accent-cyan);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            /* clamp for responsive section title */
+            font-size: clamp(2rem, 3vw, 3rem);
+            color: var(--terminal-green);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::before {
+            content: '//';
+            color: var(--accent-cyan);
+            margin-right: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--terminal-green), transparent);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid var(--terminal-green);
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent-cyan);
+            transition: height 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateX(10px);
+            background: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+        }
+
+        .skill-card:hover::before {
+            height: 100%;
+        }
+
+        .skill-card h3 {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            color: var(--terminal-green);
+        }
+
+        .skill-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+        }
+
+        /* Projects */
+        .project-card {
+            background: rgba(0, 217, 255, 0.05);
+            border: 2px solid var(--accent-cyan);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            bottom: -2px;
+            left: -2px;
+            background: linear-gradient(45deg, var(--terminal-green), var(--accent-cyan));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .project-card:hover::after {
+            opacity: 0.3;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.4);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-date {
+            color: var(--terminal-green);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .project-description {
+            color: var(--terminal-green);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.4rem 1rem;
+            background: rgba(0, 255, 65, 0.2);
+            border: 1px solid var(--terminal-green);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--terminal-green);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            text-shadow: 0 0 10px var(--accent-cyan);
+            transform: translateX(5px);
+        }
+
+        /* Achievement Card */
+        .achievement-card {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 217, 255, 0.1));
+            border: 3px solid var(--warning-red);
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '🏆';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 4rem;
+            opacity: 0.2;
+        }
+
+        .achievement-card h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            color: var(--warning-red);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid var(--terminal-green);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--terminal-green);
+            display: block;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 255, 65, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
+        }
+
+        .contact-item h4 {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker-bg);
+            border-top: 2px solid var(--terminal-green);
+            padding: 2rem;
+            text-align: center;
+            color: var(--terminal-green);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--terminal-green), var(--accent-cyan));
+            z-index: 9999;
+            transition: width 0.1s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Responsive adjustments for long contact text */
+        .contact-item p {
+            max-width: 100%;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.4;
+            font-size: clamp(0.85rem, 1.2vw, 1rem);
+        }
+
+        @media (max-width: 768px) {
+            .contact-item {
+                padding: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo glitch">YKG_</div>
+            <ul class="nav-links">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="terminal-prefix">root@yaswanth:~$ whoami</div>
+            <h1 class="glitch">YASWANTH<br>KUMAR GAMIDI</h1>
+            <p class="tagline">[ Cybersecurity Engineer × Entrepreneur × Innovator ]</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn">VIEW PROJECTS</a>
+                <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">ABOUT.ME</h2>
+        <p style="font-size: 1.2rem; line-height: 1.8; color: var(--terminal-green); max-width: 900px;">
+            Cybersecurity Engineering student at <span style="color: var(--accent-cyan); font-weight: 700;">Iowa State University</span> 
+            with a passion for building secure systems and innovative solutions. Currently serving as 
+            <span style="color: var(--accent-cyan); font-weight: 700;">IT Student Technician</span> managing security infrastructure for 200+ users.
+            Winner of the <span style="color: var(--warning-red); font-weight: 700;">ISU Innovation Prize 2025</span> for developing 
+            a food waste reduction platform. Combining technical expertise in penetration testing, vulnerability assessment, 
+            and Python automation with entrepreneurial thinking to create impactful solutions at the intersection of security and innovation.
+        </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">TECHNICAL.ARSENAL</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>[CYBERSECURITY]</h3>
+                <ul>
+                    <li>Penetration Testing & Red Teaming</li>
+                    <li>Vulnerability Assessment (ACAS, Nessus)</li>
+                    <li>Network Security & Firewall Config</li>
+                    <li>IAM & Access Control</li>
+                    <li>Security Protocol Analysis</li>
+                    <li>Incident Response</li>
+                    <li>TryHackMe & CTF Competitions</li>
+                </ul>
+            </div>
+            
+            <div class="skill-card">
+                <h3>[PROGRAMMING]</h3>
+                <ul>
+                    <li>Python (Security Automation, APIs)</li>
+                    <li>Java & JavaFX</li>
+                    <li>JavaScript & Node.js</li>
+                    <li>SQL & Database Design</li>
+                    <li>Bash Scripting</li>
+                    <li>Git/GitHub Version Control</li>
+                    <li>RESTful API Development</li>
+                </ul>
+            </div>
+            
+            <div class="skill-card">
+                <h3>[INFRASTRUCTURE]</h3>
+                <ul>
+                    <li>Linux System Administration</li>
+                    <li>Apache Web Server</li>
+                    <li>Docker & Containerization</li>
+                    <li>Cloud Security (AWS/Azure)</li>
+                    <li>UFW Firewall Configuration</li>
+                    <li>Server Hardening & STIG Compliance</li>
+                    <li>Security Operations & Monitoring</li>
+                </ul>
+            </div>
+            
+            <div class="skill-card">
+                <h3>[PROFESSIONAL]</h3>
+                <ul>
+                    <li>Cross-Functional Leadership</li>
+                    <li>Technical Communication</li>
+                    <li>Project Management</li>
+                    <li>Entrepreneurial Thinking</li>
+                    <li>Problem Solving & Innovation</li>
+                    <li>Team Collaboration</li>
+                    <li>Business Acumen</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">PROJECTS.LOG</h2>
+        
+        <!-- Innovation Prize -->
+        <div class="achievement-card">
+            <h3>🏆 ISU Innovation Prize Winner 2025</h3>
+            <p style="font-size: 1.1rem; line-height: 1.7; color: var(--terminal-green);">
+                <strong style="color: var(--accent-cyan);">"Turning Leftovers into Lifelines"</strong> — Developed a platform enabling restaurants 
+                and food providers to sell leftover food at 1/3 original price, reducing waste and making meals more affordable. 
+                Recognized in the Global Impact category and awarded <strong style="color: var(--warning-red);">$2,500</strong> 
+                for innovative entrepreneurial solution. Collaborated with ISU Pappajohn Center and Iowa State Economic Development.
+            </p>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <div>
+                    <h3>Phishing Email Detection & Analysis Tool</h3>
+                    <div class="project-date">Jun 2025 - Jul 2025</div>
+                </div>
+            </div>
+            <p class="project-description">
+                Built Python-based cybersecurity tool with API integrations to analyze suspicious emails and detect social engineering, 
+                spoofed senders, and malicious patterns at scale. Developed automated header analysis algorithms detecting domain 
+                mismatches and validating sender authenticity. Engineered workflow automations reducing manual analysis time and improving 
+                detective control efficiency.
+            </p>
+            <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Email Security</span>
+                <span class="tech-tag">API Development</span>
+                <span class="tech-tag">Threat Analysis</span>
+                <span class="tech-tag">Automation</span>
+            </div>
+            <a href="https://github.com/yash200508/Punky-Phishing-Mail" class="project-link" target="_blank">
+                VIEW ON GITHUB →
+            </a>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <div>
+                    <h3>Enterprise Security Assessment</h3>
+                    <div class="project-date">Dec 2025</div>
+                </div>
+            </div>
+            <p class="project-description">
+                Conducted comprehensive vulnerability assessment of Linux-based enterprise server identifying critical misconfigurations, 
+                insecure configurations, and security gaps. Implemented preventive and detective security controls including firewall 
+                rule automation, server hardening, secrets management practices, and access control policies. Presented findings and 
+                actionable security recommendations in formal reports to stakeholders.
+            </p>
+            <div class="project-tech">
+                <span class="tech-tag">Linux</span>
+                <span class="tech-tag">UFW Firewall</span>
+                <span class="tech-tag">Apache</span>
+                <span class="tech-tag">Network Security</span>
+                <span class="tech-tag">Vulnerability Assessment</span>
+            </div>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <div>
+                    <h3>Credit Accounting System</h3>
+                    <div class="project-date">Dec 2025 - Jan 2026</div>
+                </div>
+            </div>
+            <p class="project-description">
+                Designed secure end-to-end financial application with database integrity constraints, encrypted data handling, 
+                and role-based access controls. Built real-time analytics and multi-payment mode support applying secure coding 
+                practices to protect sensitive financial transaction data. Collaborated iteratively with end-users to gather 
+                requirements and deliver trusted software solution.
+            </p>
+            <div class="project-tech">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">JavaFX</span>
+                <span class="tech-tag">SQL</span>
+                <span class="tech-tag">Database Security</span>
+                <span class="tech-tag">Systems Design</span>
+            </div>
+            <a href="https://github.com/yash200508/credit-accounting" class="project-link" target="_blank">
+                VIEW ON GITHUB →
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">CONNECT.SH</h2>
+        <div class="contact-grid">
+            <a href="mailto:gamidiyaswanth1234@gmail.com" class="contact-item">
+                <h4>EMAIL</h4>
+                <p>gamidiyaswanth1234@gmail.com</p>
+            </a>
+            <a href="https://linkedin.com/in/yaswanthkumar-gamidi-3367861a9" target="_blank" class="contact-item">
+                <h4>LINKEDIN</h4>
+                <p>/yaswanthkumar-gamidi</p>
+            </a>
+            <a href="https://github.com/yash200508" target="_blank" class="contact-item">
+                <h4>GITHUB</h4>
+                <p>@yash200508</p>
+            </a>
+            <div class="contact-item">
+                <h4>LOCATION</h4>
+                <p>Ames, IA</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Yaswanth Kumar Gamidi | Built with passion for cybersecurity & innovation</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">[ SECURE • INNOVATE • EXECUTE ]</p>
+    </footer>
+
+    <script>
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollIndicator.style.width = scrolled + '%';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
