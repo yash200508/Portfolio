@@ -4,4 +4,10 @@
       <loc>https://yash200508.github.io/Portfolio/</loc>
       <priority>1.00</priority>
    </url>
+   <url>
+      <loc>https://yash200508.github.io/Portfolio/cumulative-reflection.html</loc>
+      <priority>0.70</priority>
+   </url>
+<url><loc>https://yash200508.github.io/Portfolio/resume.html</loc></url>
+<url><loc>https://yash200508.github.io/Portfolio/ethics-paper.html</loc></url>
 </urlset>

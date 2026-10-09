@@ -3,9 +3,12 @@
 <head>
     <meta name="google-site-verification" content="oh5GDa7Xq1QmqfIsRD6NwvUF0JlnraE29jCxqiWtumo" />
     <meta charset="UTF-8">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yaswanth Kumar Gamidi | Cybersecurity & Entrepreneurship</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
       <!-- SEO Meta Tags -->
     <meta name="description" content="Portfolio of Yaswanth Kumar Gamidi - Cybersecurity engineer and entrepreneurship student at Iowa State University. Showcases projects in cybersecurity, programming, and innovation.">
     <meta property="og:title" content="Yaswanth Kumar Gamidi | Cybersecurity & Entrepreneurship" />
@@ -13,583 +16,90 @@
     <meta property="og:url" content="https://yash200508.github.io/Portfolio/" />
     <meta property="og:type" content="website" />
     <meta name="author" content="Yaswanth Kumar Gamidi" />
-
-  <style>
-        :root {
-            --terminal-green: #00ff41;
-            --matrix-green: #0dff00;
-            --dark-bg: #0a0e17;
-            --darker-bg: #050810;
-            --accent-cyan: #00d9ff;
-            --warning-red: #ff0051;
-            --grid-color: rgba(0, 255, 65, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Space Mono', monospace;
-            background: var(--dark-bg);
-            color: var(--terminal-green);
-            overflow-x: hidden;
-            cursor: crosshair;
-        }
-
-        /* Animated grid background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridScroll 20s linear infinite;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        @keyframes gridScroll {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
-        }
-
-        /* Glitch effect */
-        .glitch {
-            position: relative;
-            animation: glitch 3s infinite;
-        }
-
-        @keyframes glitch {
-            0%, 90%, 100% { transform: translate(0); }
-            92% { transform: translate(-2px, 2px); }
-            94% { transform: translate(2px, -2px); }
-            96% { transform: translate(-2px, -2px); }
-        }
-
-        /* Header/Nav */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 14, 23, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--terminal-green);
-            z-index: 1000;
-            padding: 1rem 2rem;
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            color: var(--terminal-green);
-            text-shadow: 0 0 10px var(--terminal-green);
-        }
-
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--terminal-green);
-            text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::before {
-            content: '>';
-            position: absolute;
-            left: -15px;
-            opacity: 0;
-            transition: all 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 10px var(--accent-cyan);
-        }
-
-        .nav-links a:hover::before {
-            opacity: 1;
-            left: -20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 6rem 2rem 2rem;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            text-align: center;
-            z-index: 1;
-        }
-
-        .terminal-prefix {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--accent-cyan);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        h1 {
-            font-family: 'Archivo Black', sans-serif;
-            /* fluid size using clamp */
-            font-size: clamp(2.5rem, 5vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, var(--terminal-green), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideUp 1s ease-out;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .tagline {
-            /* responsive tagline */
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            color: var(--terminal-green);
-            margin-bottom: 2rem;
-            font-weight: 400;
-            animation: slideUp 1s ease-out 0.2s both;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 3rem;
-            animation: slideUp 1s ease-out 0.4s both;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border: 2px solid var(--terminal-green);
-            background: transparent;
-            color: var(--terminal-green);
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--terminal-green);
-            transition: left 0.3s;
-            z-index: -1;
-        }
-
-        .btn:hover {
-            color: var(--dark-bg);
-            box-shadow: 0 0 20px var(--terminal-green);
-        }
-
-        .btn:hover::before {
-            left: 0;
-        }
-
-        .btn-secondary {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-        }
-
-        .btn-secondary::before {
-            background: var(--accent-cyan);
-        }
-
-        .btn-secondary:hover {
-            box-shadow: 0 0 20px var(--accent-cyan);
-        }
-
-        /* Sections */
-        section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
-        .section-title {
-            font-family: 'Archivo Black', sans-serif;
-            /* clamp for responsive section title */
-            font-size: clamp(2rem, 3vw, 3rem);
-            color: var(--terminal-green);
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::before {
-            content: '//';
-            color: var(--accent-cyan);
-            margin-right: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--terminal-green), transparent);
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-card {
-            background: rgba(0, 255, 65, 0.05);
-            border: 2px solid var(--terminal-green);
-            padding: 2rem;
-            position: relative;
-            transition: all 0.3s;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: var(--accent-cyan);
-            transition: height 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateX(10px);
-            background: rgba(0, 255, 65, 0.1);
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
-        }
-
-        .skill-card:hover::before {
-            height: 100%;
-        }
-
-        .skill-card h3 {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--accent-cyan);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-card ul {
-            list-style: none;
-            color: var(--terminal-green);
-        }
-
-        .skill-card li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .skill-card li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--accent-cyan);
-        }
-
-        /* Projects */
-        .project-card {
-            background: rgba(0, 217, 255, 0.05);
-            border: 2px solid var(--accent-cyan);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-            transition: all 0.4s;
-        }
-
-        .project-card::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            bottom: -2px;
-            left: -2px;
-            background: linear-gradient(45deg, var(--terminal-green), var(--accent-cyan));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .project-card:hover::after {
-            opacity: 0.3;
-        }
-
-        .project-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.4);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-card h3 {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.8rem;
-            color: var(--accent-cyan);
-            margin-bottom: 0.5rem;
-        }
-
-        .project-date {
-            color: var(--terminal-green);
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .project-description {
-            color: var(--terminal-green);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            padding: 0.4rem 1rem;
-            background: rgba(0, 255, 65, 0.2);
-            border: 1px solid var(--terminal-green);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--terminal-green);
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-cyan);
-            text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.3s;
-        }
-
-        .project-link:hover {
-            text-shadow: 0 0 10px var(--accent-cyan);
-            transform: translateX(5px);
-        }
-
-        /* Achievement Card */
-        .achievement-card {
-            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 217, 255, 0.1));
-            border: 3px solid var(--warning-red);
-            padding: 3rem;
-            margin: 3rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .achievement-card::before {
-            content: '🏆';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 4rem;
-            opacity: 0.2;
-        }
-
-        .achievement-card h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 2rem;
-            color: var(--warning-red);
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-item {
-            background: rgba(0, 255, 65, 0.05);
-            border: 2px solid var(--terminal-green);
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: var(--terminal-green);
-            display: block;
-        }
-
-        .contact-item:hover {
-            background: rgba(0, 255, 65, 0.15);
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
-        }
-
-        .contact-item h4 {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--accent-cyan);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--darker-bg);
-            border-top: 2px solid var(--terminal-green);
-            padding: 2rem;
-            text-align: center;
-            color: var(--terminal-green);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--terminal-green), var(--accent-cyan));
-            z-index: 9999;
-            transition: width 0.1s;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Responsive adjustments for long contact text */
-        .contact-item p {
-            max-width: 100%;
-            overflow-wrap: anywhere;
-            word-break: break-word;
-            line-height: 1.4;
-            font-size: clamp(0.85rem, 1.2vw, 1rem);
-        }
-
-        @media (max-width: 768px) {
-            .contact-item {
-                padding: 1.5rem;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/documents.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <!-- Scroll Progress Bar -->
-    <div class="scroll-indicator" id="scrollIndicator"></div>
+    <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true"></div>
 
     <!-- Header -->
     <header>
-        <nav>
-            <div class="logo glitch">YKG_</div>
-            <ul class="nav-links">
+        <nav aria-label="Main navigation">
+            <a class="logo" href="#home" aria-label="Yaswanth Kumar Gamidi, home"><span class="logo-mark" aria-hidden="true">Y</span>YKG_</a>
+            <button class="menu-toggle" type="button" aria-controls="navigation" aria-expanded="false">MENU <span aria-hidden="true">+</span></button>
+            <ul class="nav-links" id="navigation">
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#experience">EXPERIENCE</a></li>
                 <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#documents">DOCUMENTS</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
     </header>
 
+    <main id="main" tabindex="-1">
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home" aria-labelledby="hero-title">
         <div class="hero-content">
-            <div class="terminal-prefix">root@yaswanth:~$ whoami</div>
-            <h1 class="glitch">YASWANTH<br>KUMAR GAMIDI</h1>
+            <div class="eyebrow">PORTFOLIO / 2026</div>
+            <div class="terminal-prefix"><span class="terminal-dot" aria-hidden="true"></span>root@yaswanth:~$ whoami</div>
+            <h1 id="hero-title">YASWANTH<br>KUMAR GAMIDI</h1>
             <p class="tagline">[ Cybersecurity Engineer × Entrepreneur × Innovator ]</p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn">VIEW PROJECTS</a>
-                <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+                <a href="resume.html" class="btn btn-secondary">VIEW RÉSUMÉ</a>
+                <a href="#contact" class="hero-contact">GET IN TOUCH ↗</a>
             </div>
         </div>
+
+        <div class="hero-visual has-portrait"><div class="hero-art" aria-hidden="true">
+            <div class="art-grid"></div>
+            <div class="orbit orbit-outer"></div><div class="orbit orbit-middle"></div><div class="orbit orbit-inner"></div>
+            <div class="orbital-axis axis-one"></div><div class="orbital-axis axis-two"></div>
+            <div class="core-halo"></div>
+            <svg class="shield" viewBox="0 0 240 280" fill="none">
+                <defs><linearGradient id="shield-gradient" x1="30" y1="20" x2="220" y2="260" gradientUnits="userSpaceOnUse"><stop stop-color="#73dfff"/><stop offset=".5" stop-color="#8a88ff"/><stop offset="1" stop-color="#c27bff"/></linearGradient></defs>
+                <path d="M120 18 218 58v85c0 58-47 101-98 124-51-23-98-66-98-124V58l98-40Z" fill="#131d37" stroke="url(#shield-gradient)" stroke-width="2"/>
+                <path d="m120 37 80 33v72c0 48-36 85-80 107-44-22-80-59-80-107V70l80-33Z" stroke="url(#shield-gradient)" stroke-opacity=".4"/>
+                <path d="M120 38v212M41 70l160 144M199 70 39 214" stroke="url(#shield-gradient)" stroke-opacity=".12"/>
+                <path d="M93 130v-17a27 27 0 0 1 54 0v17" stroke="url(#shield-gradient)" stroke-width="4"/>
+                <rect x="80" y="130" width="80" height="64" rx="12" fill="#192442" stroke="url(#shield-gradient)" stroke-width="2"/>
+                <circle cx="120" cy="156" r="5" fill="#9fbeff"/><path d="M120 160v14" stroke="#9fbeff" stroke-width="3"/>
+            </svg>
+            <span class="art-coordinate coordinate-top">SYS / YKG_</span>
+            <span class="art-coordinate coordinate-bottom">SECURE • INNOVATE • EXECUTE</span>
+            <span class="orbital-node node-one"></span><span class="orbital-node node-two"></span>
+        </div>
+        <figure class="portrait-frame"><img class="portrait-photo" src="assets/yaswanth-profile.jpg" alt="Yaswanth Kumar Gamidi" width="560" height="560" decoding="async" fetchpriority="high"></figure></div>
+        <a class="hero-scroll" href="#about"><span aria-hidden="true">↓</span> EXPLORE PORTFOLIO</a>
     </section>
 
     <!-- About Section -->
     <section id="about">
-        <h2 class="section-title">ABOUT.ME</h2>
-        <p style="font-size: 1.2rem; line-height: 1.8; color: var(--terminal-green); max-width: 900px;">
-            Cybersecurity Engineering student at <span style="color: var(--accent-cyan); font-weight: 700;">Iowa State University</span> 
-            with a passion for building secure systems and innovative solutions. Currently serving as 
-            <span style="color: var(--accent-cyan); font-weight: 700;">IT Student Technician</span> managing security infrastructure for 200+ users.
-            Winner of the <span style="color: var(--warning-red); font-weight: 700;">ISU Innovation Prize 2025</span> for developing 
-            a food waste reduction platform. Combining technical expertise in penetration testing, vulnerability assessment, 
+        <div class="section-heading"><span class="section-index">01 / ABOUT</span><h2 class="section-title">ABOUT.ME</h2></div>
+        <div class="about-content">
+        <p>
+            Cybersecurity Engineering student at <span>Iowa State University</span>
+            with a passion for building secure systems and innovative solutions. Currently serving as
+            <span>IT Student Technician</span> managing security infrastructure for 200+ users.
+            Winner of the <span>ISU Innovation Prize 2025</span> for developing
+            a food waste reduction platform. Combining technical expertise in penetration testing, vulnerability assessment,
             and Python automation with entrepreneurial thinking to create impactful solutions at the intersection of security and innovation.
         </p>
+
+        <div class="career-objective" id="career">
+            <h3>CAREER OBJECTIVE</h3>
+            <p>I have always had a keen interest in technology, and cybersecurity seems like an application that allows me to put that passion into helping others.</p>
+            <p>I am very excited to work on the cybersecurity front with a goal to shield people against the increasing menace of cybercrime.</p>
+        </div>
+        </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills">
-        <h2 class="section-title">TECHNICAL.ARSENAL</h2>
+        <div class="section-heading"><span class="section-index">02 / SKILLS</span><h2 class="section-title">TECHNICAL.ARSENAL</h2></div>
         <div class="skills-grid">
             <div class="skill-card">
                 <h3>[CYBERSECURITY]</h3>
@@ -603,7 +113,7 @@
                     <li>TryHackMe & CTF Competitions</li>
                 </ul>
             </div>
-            
+
             <div class="skill-card">
                 <h3>[PROGRAMMING]</h3>
                 <ul>
@@ -616,7 +126,7 @@
                     <li>RESTful API Development</li>
                 </ul>
             </div>
-            
+
             <div class="skill-card">
                 <h3>[INFRASTRUCTURE]</h3>
                 <ul>
@@ -629,7 +139,7 @@
                     <li>Security Operations & Monitoring</li>
                 </ul>
             </div>
-            
+
             <div class="skill-card">
                 <h3>[PROFESSIONAL]</h3>
                 <ul>
@@ -645,145 +155,127 @@
         </div>
     </section>
 
+
+    <section id="experience" aria-labelledby="experience-title">
+        <div class="section-heading"><span class="section-index">03 / EXPERIENCE</span><h2 class="section-title" id="experience-title">EXPERIENCE.LOG</h2></div>
+        <article class="experience-card">
+            <div class="experience-role"><span class="experience-date">Apr 2025 – Present</span><h3>CHHS IT Student Technician</h3><p>Iowa State University · Ames, IA</p></div>
+            <ul>
+                <li>Troubleshoot hardware, software, and network issues for the College of Human Sciences and support day-to-day IT operations.</li>
+                <li>Configure systems and administer user accounts while following security best practices and access-control procedures.</li>
+                <li>Collaborate with the IT team to resolve technical issues efficiently and improve service delivery processes.</li>
+            </ul>
+        </article>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects">
-        <h2 class="section-title">PROJECTS.LOG</h2>
-        
+        <div class="section-heading"><span class="section-index">04 / PROJECTS</span><h2 class="section-title">PROJECTS.LOG</h2></div>
+
+
+        <div class="project-controls" hidden><div class="project-filters" role="group" aria-label="Filter projects"><button type="button" data-filter="all" aria-pressed="true">All work</button><button type="button" data-filter="senior" aria-pressed="false">Senior design</button><button type="button" data-filter="security" aria-pressed="false">Cybersecurity</button><button type="button" data-filter="software" aria-pressed="false">Software</button></div><p class="filter-status" role="status" aria-live="polite">4 projects</p></div>
+        <article class="senior-design-card" data-project-category="senior" id="senior-design" aria-labelledby="senior-design-title">
+            <div class="senior-design-heading"><span class="senior-status">SENIOR DESIGN / IN PROGRESS</span><span class="senior-team">TEAM sdmay27-43</span></div>
+            <h3 id="senior-design-title">Course-Specific AI Tutor and Interactive AI Farmer</h3>
+            <div class="senior-design-content">
+                <div><p>This project aims to develop and pilot course-specific AI interactions that help students understand course concepts and practice evidence-based decision-making.</p><p>The platform is designed to be a simple, affordable, and instructor-manageable prototype suitable for classroom testing. It will use instructor-provided course materials, references, and scenarios to provide students with context-specific AI interactions.</p></div>
+                <div class="senior-contribution"><div class="senior-label">TEAM CONTRIBUTION</div><p>Yaswanth is a member of the Senior Design team contributing to the development of the course-specific AI platform.</p><a class="project-link" href="https://sdmay27-43.sd.ece.iastate.edu/" target="_blank" rel="noopener noreferrer">VISIT TEAM WEBSITE →</a></div>
+            </div>
+            <details class="project-details senior-resources"><summary>My documented contribution</summary><ul><li>Participated in drafting and finalizing the team contract, defining team roles, communication standards, and leadership duties as Integration &amp; Quality Assurance lead.</li><li>Contributed to early design document planning and requirement analysis based on the project brief review, with a focus on testing and integration strategy.</li><li>Reviewed the AI Tutor sandbox handover document and codebase</li><li>Helped with the project design document and senior design team website</li><li>Helped prepare presentation notes for the client meeting</li><li>Presented the Lightning Talk on &quot;Problem and User Needs&quot;</li><li>Worked on the project design document, focusing on architecture and requirements</li></ul><p class="source-caption">Team 43 · Weekly reports 1 and 3</p></details><details class="project-details senior-resources"><summary>Project resources</summary><ul><li><a href="https://sdmay27-43.sd.ece.iastate.edu/AI_Tutor_Farmer_Lightning_Talk_ProblemUserNeeds.pdf" target="_blank" rel="noopener noreferrer">Problem and user needs presentation ↗</a></li><li><a href="https://sdmay27-43.sd.ece.iastate.edu/WeeklyReport1.pdf" target="_blank" rel="noopener noreferrer">Weekly report 1 ↗</a></li><li><a href="https://sdmay27-43.sd.ece.iastate.edu/WeeklyReport2.pdf" target="_blank" rel="noopener noreferrer">Weekly report 2 ↗</a></li><li><a href="https://sdmay27-43.sd.ece.iastate.edu/WeeklyReport3%20(1).pdf" target="_blank" rel="noopener noreferrer">Weekly report 3 ↗</a></li></ul></details>
+        </article>
+
         <!-- Innovation Prize -->
         <div class="achievement-card">
             <h3>🏆 ISU Innovation Prize Winner 2025</h3>
-            <p style="font-size: 1.1rem; line-height: 1.7; color: var(--terminal-green);">
-                <strong style="color: var(--accent-cyan);">"Turning Leftovers into Lifelines"</strong> — Developed a platform enabling restaurants 
-                and food providers to sell leftover food at 1/3 original price, reducing waste and making meals more affordable. 
-                Recognized in the Global Impact category and awarded <strong style="color: var(--warning-red);">$2,500</strong> 
+            <p>
+                <strong>"Turning Leftovers into Lifelines"</strong> — Developed a platform enabling restaurants
+                and food providers to sell leftover food at 1/3 original price, reducing waste and making meals more affordable.
+                Recognized in the Global Impact category and awarded <strong>$2,500</strong>
                 for innovative entrepreneurial solution. Collaborated with ISU Pappajohn Center and Iowa State Economic Development.
             </p>
         </div>
-        
-        <div class="project-card">
+
+        <div class="projects-grid">
+        <article class="project-card" data-project-category="security" id="project-1">
+            <div class="project-visual" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 7h22v18H5zM5 8l11 9L27 8"/></svg><span>PROJECT / 01</span><div class="visual-lines"></div></div>
             <div class="project-header">
                 <div>
                     <h3>Phishing Email Detection & Analysis Tool</h3>
                     <div class="project-date">Jun 2025 - Jul 2025</div>
                 </div>
             </div>
-            <p class="project-description">
-                Built Python-based cybersecurity tool with API integrations to analyze suspicious emails and detect social engineering, 
-                spoofed senders, and malicious patterns at scale. Developed automated header analysis algorithms detecting domain 
-                mismatches and validating sender authenticity. Engineered workflow automations reducing manual analysis time and improving 
-                detective control efficiency.
-            </p>
-            <div class="project-tech">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Email Security</span>
-                <span class="tech-tag">API Development</span>
-                <span class="tech-tag">Threat Analysis</span>
-                <span class="tech-tag">Automation</span>
-            </div>
-            <a href="https://github.com/yash200508/Punky-Phishing-Mail" class="project-link" target="_blank">
+            <p class="project-description">Developed a phishing-email analysis tool to identify spoofed sender information, malicious links, deceptive language patterns, and forged email metadata.</p>
+            <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Email Security</span><span class="tech-tag">Threat Analysis</span></div>
+            <a href="https://github.com/yash200508/Punky-Phishing-Mail" class="project-link" target="_blank" rel="noopener noreferrer">
                 VIEW ON GITHUB →
             </a>
-        </div>
-        
-        <div class="project-card">
+        <details class="project-details"><summary>Work &amp; supporting material</summary><p>Implemented email-header analysis to detect domain mismatches and help validate sender authenticity.</p><a href="resume.html#phishing">Résumé project entry →</a></details></article>
+
+        <article class="project-card" data-project-category="security" id="project-2">
+            <div class="project-visual" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><path d="m16 3 11 5v8c0 6-5 11-11 14C10 27 5 22 5 16V8l11-5Z"/><path d="m11 16 4 4 7-8"/></svg><span>PROJECT / 02</span><div class="visual-lines"></div></div>
             <div class="project-header">
                 <div>
-                    <h3>Enterprise Security Assessment</h3>
+                    <h3>Cyber Security Fundamentals</h3>
                     <div class="project-date">Dec 2025</div>
                 </div>
             </div>
-            <p class="project-description">
-                Conducted comprehensive vulnerability assessment of Linux-based enterprise server identifying critical misconfigurations, 
-                insecure configurations, and security gaps. Implemented preventive and detective security controls including firewall 
-                rule automation, server hardening, secrets management practices, and access control policies. Presented findings and 
-                actionable security recommendations in formal reports to stakeholders.
-            </p>
-            <div class="project-tech">
-                <span class="tech-tag">Linux</span>
-                <span class="tech-tag">UFW Firewall</span>
-                <span class="tech-tag">Apache</span>
-                <span class="tech-tag">Network Security</span>
-                <span class="tech-tag">Vulnerability Assessment</span>
-            </div>
-        </div>
-        
-        <div class="project-card">
+            <p class="project-description">Conducted a hands-on security assessment of a Linux-based server environment to identify misconfigurations, vulnerabilities, and security risks.</p>
+            <div class="project-tech"><span class="tech-tag">Linux</span><span class="tech-tag">UFW Firewall</span><span class="tech-tag">Apache</span><span class="tech-tag">Network Security</span></div>
+        <details class="project-details"><summary>Work &amp; supporting material</summary><p>Applied defensive practices including firewall configuration, access control, secure system administration, and system hardening.</p><a href="resume.html#security-fundamentals">Résumé project entry →</a></details></article>
+
+        <article class="project-card" data-project-category="software" id="project-3">
+            <div class="project-visual" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="16" cy="7" rx="11" ry="4"/><path d="M5 7v17c0 5 22 5 22 0V7M5 15c0 5 22 5 22 0"/></svg><span>PROJECT / 03</span><div class="visual-lines"></div></div>
             <div class="project-header">
                 <div>
                     <h3>Credit Accounting System</h3>
                     <div class="project-date">Dec 2025 - Jan 2026</div>
                 </div>
             </div>
-            <p class="project-description">
-                Designed secure end-to-end financial application with database integrity constraints, encrypted data handling, 
-                and role-based access controls. Built real-time analytics and multi-payment mode support applying secure coding 
-                practices to protect sensitive financial transaction data. Collaborated iteratively with end-users to gather 
-                requirements and deliver trusted software solution.
-            </p>
-            <div class="project-tech">
-                <span class="tech-tag">Java</span>
-                <span class="tech-tag">JavaFX</span>
-                <span class="tech-tag">SQL</span>
-                <span class="tech-tag">Database Security</span>
-                <span class="tech-tag">Systems Design</span>
-            </div>
-            <a href="https://github.com/yash200508/credit-accounting" class="project-link" target="_blank">
+            <p class="project-description">Designed and developed a database-backed application for customer credit sales, balances, partial payments, and transaction history.</p>
+            <div class="project-tech"><span class="tech-tag">SQL</span><span class="tech-tag">Database Design</span><span class="tech-tag">JavaFX</span><span class="tech-tag">Systems Design</span></div>
+            <a href="https://github.com/yash200508/credit-accounting" class="project-link" target="_blank" rel="noopener noreferrer">
                 VIEW ON GITHUB →
             </a>
+        <details class="project-details"><summary>Work &amp; supporting material</summary><p>Built a JavaFX interface and structured data workflows focused on accuracy, data integrity, and usability for non-technical users.</p><a href="resume.html#credit-accounting">Résumé project entry →</a></details></article>
         </div>
+    </section>
+
+
+    <section id="documents" aria-labelledby="documents-title">
+        <div class="section-heading"><span class="section-index">05 / DOCUMENTS</span><h2 class="section-title" id="documents-title">DOCUMENTS.ARCHIVE</h2></div>
+        <div class="document-grid"><article class="document-card"><span class="document-type">EXPERIENCE / RÉSUMÉ</span><h3>Résumé</h3><div class="document-actions"><a href="resume.html">Read online <span aria-hidden="true">→</span></a><a href="assets/documents/resume.pdf" download>Download PDF <span aria-hidden="true">↓</span></a></div><p class="document-note">Formatted copy · original wording</p></article><article class="document-card"><span class="document-type">REFLECTION / EDUCATION</span><h3>Cumulative reflection</h3><div class="document-actions"><a href="cumulative-reflection.html">Read online <span aria-hidden="true">→</span></a><a href="assets/documents/cumulative-reflection.pdf" download>Download PDF <span aria-hidden="true">↓</span></a></div><p class="document-note">Formatted copy · original wording</p></article><article class="document-card"><span class="document-type">ETHICS / CPRE 2340</span><h3>Negative Impacts of Gig-Work Algorithmic Management</h3><div class="document-actions"><a href="ethics-paper.html">Read online <span aria-hidden="true">→</span></a><a href="assets/documents/ethics-paper.pdf" download>Download PDF <span aria-hidden="true">↓</span></a></div><p class="document-note">Formatted copy · original wording</p></article><article class="document-card document-pending"><span class="document-type">REFLECTION / GENERAL EDUCATION</span><h3>General education reflection</h3><p class="pending-status">Awaiting author’s text</p></article></div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2 class="section-title">CONNECT.SH</h2>
+        <div class="section-heading"><span class="section-index">06 / CONTACT</span><h2 class="section-title">CONNECT.SH</h2></div>
         <div class="contact-grid">
             <a href="mailto:gamidiyaswanth1234@gmail.com" class="contact-item">
-                <h4>EMAIL</h4>
+                <h3>EMAIL</h3>
                 <p>gamidiyaswanth1234@gmail.com</p>
             </a>
-            <a href="https://www.linkedin.com/in/yaswanth-kumar-gamidi" target="_blank" class="contact-item">
-                <h4>LINKEDIN</h4>
-                <p>/yaswanth-kumar-gamidi</p>
+            <a href="https://www.linkedin.com/in/yaswanth-kumar-gamidi-3367861a9" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <h3>LINKEDIN</h3>
+                <p>Yaswanth Kumar Gamidi ↗</p>
             </a>
-            <a href="https://github.com/yash200508" target="_blank" class="contact-item">
-                <h4>GITHUB</h4>
+            <a href="https://github.com/yash200508" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <h3>GITHUB</h3>
                 <p>@yash200508</p>
             </a>
             <div class="contact-item">
-                <h4>LOCATION</h4>
+                <h3>LOCATION</h3>
                 <p>Ames, IA</p>
             </div>
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
-    <footer>
+    <footer><a class="footer-logo" href="#home" aria-label="Back to top">YKG_ <span aria-hidden="true">↑</span></a>
         <p>© 2026 Yaswanth Kumar Gamidi | Built with passion for cybersecurity & innovation</p>
-        <p style="margin-top: 0.5rem; opacity: 0.7;">[ SECURE • INNOVATE • EXECUTE ]</p>
+        <p>[ SECURE • INNOVATE • EXECUTE ]</p>
     </footer>
-
-    <script>
-        // Scroll progress indicator
-        window.addEventListener('scroll', () => {
-            const scrollIndicator = document.getElementById('scrollIndicator');
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (window.scrollY / windowHeight) * 100;
-            scrollIndicator.style.width = scrolled + '%';
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="assets/site.js" defer></script>
 </body>
 </html>
