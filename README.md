@@ -21,7 +21,7 @@ Open http://127.0.0.1:8765/.
 - Résumé, cumulative reflection, and prerequisite ethics paper as online readers and PDF downloads.
 - General education reflection explicitly awaits the author's text.
 
-The document readers and PDFs are formatted copies of the supplied materials, preserving the original wording. Their formatting differs from the original uploaded files. The résumé uses the supplied updated version and lists Hindu YUVA leadership as April 2025–June 2026. The original cumulative reflection's wording remains intact, including passages the author may wish to review.
+The document readers and PDFs are formatted copies of the supplied materials, preserving the original wording except for the cumulative reflection's sentence typo correction. Their formatting differs from the original uploaded files. The résumé uses the supplied updated version and lists Hindu YUVA leadership as April 2025–June 2026. The cumulative reflection removes the stray trailing “or” from the entrepreneurship sentence in both the online reader and PDF; all other reflection wording remains intact.
 
 The portrait is the student's existing public Team 43 profile photograph. Project descriptions use existing résumé wording. No new substantive coursework or personal achievements were written for this update.
 
